@@ -8,7 +8,7 @@
                 <div class="card-header">Nueva Publicacion</div>
 
                 <div class="card-body">
-                    <form action="publicar-post" method="POST" enctype="multipart/form-data">
+                    <form action="/articulos/publicar" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" class="form-control" id="user_id" name="user_id">
                         <div class="form-group">
@@ -18,15 +18,18 @@
                         <div class="form-group">
                           <label for="exampleFormControlTextarea1">Detalle</label>
                           <textarea class="form-control summernote" required id="detalle" name="detalle" rows="3">
-
                           </textarea>
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Archivo para subir</label>
+                          <label for="exampleFormControlInput1">Precio Base</label>
+                          <input type="text" required class="form-control" id="precio_base" name="precio_base" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Subir Foto</label>
                             <input type="file" class="form-control-file" id="myFiles" name="myFiles">
                         </div>
                           <div class="box-footer">
-                            <button type="submit" id="bt-publicar" class="btn btn-primary">Grabar/Subir</button>
+                            <button type="submit" id="bt-publicar" class="btn btn-primary">Publicar</button>
                           </div>
                       </form>
                 </div>

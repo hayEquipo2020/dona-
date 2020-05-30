@@ -8,6 +8,8 @@ use App\Articulo;
 use Auth;
 use Redirect;
 use Session;
+use Uuid;
+use Storage;
 
 class ArticuloController extends Controller
 {
@@ -47,4 +49,39 @@ class ArticuloController extends Controller
         $articulo = Articulo::where('id', $id)->first();
         return view('articulo/'.$id,['articulo' => $articulo]);
     }    
+    public function publicar(Request $request)
+    {
+
+        $uuid = Uuid::generate()->string;
+        if ($request->myFiles)
+        {
+            $name = $request->myFiles->getClientOriginalName();
+            $ext=explode('.',$name)[1];
+            $name = $uuid.'.'.$ext;
+            $filename = \Storage::disk('docs')->put($name, \File::get($request->myFiles));
+            $url = Storage::disk('docs')->url($name);
+            $detalle=$request->detalle;
+            $post = new Articulo;
+            $post->foto = $name;
+            $post->titulo = $request->titulo;
+            $post->precio_base = $request->precio_base;
+            $post->descripcion = $detalle;;
+            $post->user_id = Auth::user()->id;
+            $post->save();
+        }
+        else
+        {
+            $post = new Articulo;
+            $post->titulo = $request->titulo;
+            $post->foto = "";
+            $post->descripcion = $detalle;
+            $post->precio_base = $request->precio_base;
+            $post->user_id = Auth::user()->id;
+            $post->save();   
+        }
+        
+        Session::flash('message', 'Publicacion realziada con exito');
+        return Redirect::to('/');
+        //return view('gastos/edit', ['gasto' => $gasto]);
+    }
 }
