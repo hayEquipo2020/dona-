@@ -19,4 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// usuarios
 Route::get('/usuarios/perfil/{id}', 'UserController@perfil')->name('perfil');
+
+// articuloes
+Route::get('/articulos', 'ArticuloController@articulos')->name('articulo');
+Route::get('/articulos', 'ArticuloController@articulos')->name('articulo');
+Route::get('/articulo/nuevo', 'ArticuloController@nuevo')->name('nuevoarticulo');
+Route::get('/articulo/{id}', 'ArticuloController@detalle')->name('articulodetalle');
