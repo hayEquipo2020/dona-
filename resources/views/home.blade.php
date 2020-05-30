@@ -25,7 +25,7 @@
             @foreach($articulos as $articulo)
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-              <img src="../../images/articulos/{{ $articulo->foto }}">
+              <img src="../../images/articulos/{{ $articulo->foto }}" class="img-thumbnail">
                 <div class="card-body">
                   <p class="card-text">{{ $articulo->Titulo }}</p>
                   <p class="card-text">{{ $articulo->detalle }}</p>

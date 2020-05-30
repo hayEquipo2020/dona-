@@ -23,7 +23,7 @@
     <div id="app">
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="../../images/logo.png" width="80" height="80" alt="" loading="lazy">
                   </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,7 +134,7 @@
         </nav>
         -->
 
-        <main class="py-4">
+        <main class="py-4 mt-10">
             @yield('content')
         </main>
     </div>
