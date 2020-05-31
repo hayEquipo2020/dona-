@@ -67,7 +67,32 @@ class ArticuloController extends Controller
             return Redirect::to('/');
         }
     }   
-
+    public function update(Request $request)
+    {
+        if(Auth::user())
+        {
+            $articulo = Articulo::where('id', $request->id)->where('user_id', Auth::user()->id)->first();
+            $subasta = Subasta::where('articulo_id', $request->id)->first();
+            if(!$subasta)
+            {
+                $modificable = true;
+                $articulo->valor = $request->valor;
+            }
+            else
+            {
+                $modificable = false;
+            }
+            $articulo->titulo = $request->titulo;
+            $articulo->descripcion = $request->detalle;
+            $articulo->save();
+            Session::flash('message', 'Modificacion realizada con exito');
+            return Redirect::to('/');
+        }
+        else{
+            Session::flash('message', 'Debes ingresar al sistema');
+            return Redirect::to('/');
+        }
+    }
     public function detalle($id)
     {
         $articulo = Articulo::where('id', $id)->first();

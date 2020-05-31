@@ -8,8 +8,9 @@
                 <div class="card-header">Nueva Publicacion</div>
 
                 <div class="card-body">
-                    <form action="/articulos/publicar" method="POST" enctype="multipart/form-data">
+                    <form action="/articulos/update" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" class="form-control" id="id" name="id" value="{{ $articulo->id }}">
                         <input type="hidden" class="form-control" id="user_id" name="user_id">
                         <div class="form-group">
                           <label for="exampleFormControlInput1">Titulo</label>

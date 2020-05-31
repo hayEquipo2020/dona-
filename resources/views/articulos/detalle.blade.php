@@ -28,7 +28,6 @@
           @endisset
           <h3 class="mb-0">{{ $articulo->titulo }}</h3>
           <div class="mb-1 text-muted">{{ $articulo->created_at }}</div>
-          <p class="card-text mb-auto">{{ $articulo->detalle }}</p>
           @isset($articulo->subasta->valor)
             <strong class="d-inline-block mb-2 text-primary">Ultima Oferta: {{ $subasta->valor }} </strong>
             <strong class="d-inline-block mb-2 text-primary">Realizada por: {{ $subasta->user->name }} </strong>
@@ -46,6 +45,11 @@
           </div>
           <button href="" class="stretched-link btn btn-primary btn-sm">Ofertar</button>
         </form>
+        @auth
+        @if(Auth::user()->id == $articulo->user_id)
+            <a href="/articulo/editar/{{ $articulo->id }}" type="button" class="btn btn-sm btn-warning">Editar</a>
+        @endif
+        @endauth
         </div>
         <div class="col-md-6">
           <img src="../../images/articulos/{{ $articulo->foto }}" class="img-thumbnail">
@@ -55,7 +59,7 @@
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
-          Algun texto o algo para poner
+          <p class="card-text mb-auto">{{ $articulo->descripcion }}</p>
         </div>
 
       </div>
