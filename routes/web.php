@@ -23,8 +23,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/usuarios/perfil/{id}', 'UserController@perfil')->name('perfil');
 
 // articuloes
-Route::get('/articulos', 'ArticuloController@articulos')->name('articulo');
-Route::get('/articulos', 'ArticuloController@articulos')->name('articulo');
+Route::get('/articulos', 'ArticuloController@index')->name('articulo');
 Route::get('/articulo/nuevo', 'ArticuloController@nuevo')->name('nuevoarticulo');
 Route::post('/articulos/publicar', 'ArticuloController@publicar')->name('publicararticulo');
+Route::post('/articulo/ofertar', 'ArticuloController@ofertar')->name('ofertar');
+Route::get('/articulo/editar/{id}', 'ArticuloController@editar')->name('articuloeditar');
 Route::get('/articulo/{id}', 'ArticuloController@detalle')->name('articulodetalle');

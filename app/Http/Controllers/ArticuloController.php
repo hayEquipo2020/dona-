@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Articulo;
+use App\Subasta;
 use Auth;
 use Redirect;
 use Session;
@@ -20,7 +21,7 @@ class ArticuloController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        //$this->middleware('auth')->except(['index', 'detalle']);
     }
 
     /**
@@ -30,8 +31,9 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        $articulos = Articulo::paginate(20);
-        return view('articulos',['articulos' => $articulos]);
+        $articulos = Articulo::with('subasta')->paginate();
+        //dd($articulos);
+        return view('articulos/index', ['articulos' => $articulos]);
     }
     public function nuevo()
     {
@@ -44,11 +46,79 @@ class ArticuloController extends Controller
             return Redirect::to('/');
         }
     }    
+    public function editar($id)
+    {
+        if(Auth::user())
+        {
+            $articulo = Articulo::where('id', $id)->where('user_id', Auth::user()->id)->first();
+            return view('articulos/editar' ,['articulo' => $articulo]);
+        }
+        else{
+            Session::flash('message', 'Debes ingresar al sistema');
+            return Redirect::to('/');
+        }
+    }   
+
     public function detalle($id)
     {
         $articulo = Articulo::where('id', $id)->first();
-        return view('articulo/'.$id,['articulo' => $articulo]);
-    }    
+        $subasta = Subasta::where('articulo_id', $id)->first();
+        return view('articulos/detalle' ,['articulo' => $articulo, 'subasta' => $subasta]);
+    } 
+    
+    public function ofertar(Request $request)
+    {
+        if(Auth::user())
+        {
+            $articulo = Articulo::where('id', $request->id)->first();
+            $subasta = Subasta::where('articulo_id', $request->id)->first();
+            if($subasta)
+            {
+                if($request->valor >= $articulo->precio_base)
+                {
+                    if($request->valor > $subasta->valor)
+                    {
+                        $subasta->user_id = Auth::user()->id;
+                        $subasta->articulo_id = $request->id;
+                        $subasta->valor = $request->valor;
+                        $subasta->save();
+                        Session::flash('message', 'Genial !!');
+                        return Redirect::to('../articulo/'.$request->id);
+                    }
+                    else{
+                        Session::flash('error', 'Debes ofertar mas de '.$subasta->valor);
+                        return Redirect::to('../articulo/'.$request->id);
+                    }
+                }
+                else
+                {
+                    Session::flash('error', 'Debes ofertar mas '.$subasta->valor);
+                    return Redirect::to('../articulo/'.$request->id); 
+                }
+            }
+            else{
+                if($request->valor >= $articulo->precio_base)
+                {
+                    $subasta = new Subasta;
+                    $subasta->user_id = Auth::user()->id;
+                    $subasta->articulo_id = $request->id;
+                    $subasta->valor = $request->valor;
+                    $subasta->save();   
+                    Session::flash('message', 'Genial !!!');
+                    return Redirect::to('../articulo/'.$request->id);
+                }
+                else
+                {
+                    Session::flash('error', 'Debes ofertar mas de '.$articulo->precio_base);
+                    return Redirect::to('../articulo/'.$request->id); 
+                }
+            }
+        }
+        else{
+            Session::flash('message', 'Debes ingresar al sistema');
+            return Redirect::to('/');   
+        }
+    }
     public function publicar(Request $request)
     {
 

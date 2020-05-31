@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="https://bootswatch.com/4/materia/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.css" rel="stylesheet">
+
 
     @yield('styles')
 </head>
@@ -36,15 +38,19 @@
     
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search" size="80">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-secondary my-2 my-sm-0 btn-sm" type="submit">Search</button>
                     </form>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="/articulos">Articulos</a>
                         </li>
+                        @guest
+                            
+                        @else
                         <li class="nav-item">
                             <a class="nav-link" href="/articulo/nuevo">Publicar Nuevo Articulo</a>
                         </li>
+                        @endif
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

@@ -18,6 +18,11 @@ class Articulo extends Model
 	{
 		return $this->belongsTo('App\User');
     }
+    public function subasta()
+	{
+		return $this->belongsTo('App\Subasta');
+    }
+/*    
 /*    
     public function comentarios()
 	{

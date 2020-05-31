@@ -18,10 +18,8 @@ class Articulo extends Model
 	{
 		return $this->belongsTo('App\User');
     }
-/*    
-    public function comentarios()
+    public function subasta()
 	{
-		return $this->hasMany('App\Comentario');
+		return $this->belongsTo('App\Subasta','id','articulo_id');
     }
-*/
 }    

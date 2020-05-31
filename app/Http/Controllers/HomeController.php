@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Articulo;
+use App\Subasta;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $articulos = Articulo::paginate();
-        return view('home',['articulos' => $articulos]);
+        $donado = Subasta::sum('valor');
+        return view('home',['articulos' => $articulos, 'donado' => $donado]);
     }
 }
