@@ -17,7 +17,7 @@
                         @endif
                         @endauth
                         @auth 
-                        <a href="/articulo/finalizar/{{ $articulo->id }}" type="button" class="btn btn-sm btn-primary">Finalziar</a>
+                        <a href="/articulo/finalizar/{{ $articulo->id }}" type="button" class="btn btn-sm btn-primary">Finalizar</a>
                         @endauth
                         @auth
                         @if(Auth::user()->id == $articulo->user_id)

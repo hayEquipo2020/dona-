@@ -12,7 +12,7 @@ class Articulo extends Model
 
     protected $table = 'articulos';
 
-    protected $fillable = ['titulo', 'descripcion','precio_base', 'foto', 'foto_id', 'user_id', 'visto'];
+    protected $fillable = ['titulo', 'descripcion','precio_base', 'foto', 'foto_id', 'user_id', 'visto', 'fecha'];
 
     public function user()
 	{
