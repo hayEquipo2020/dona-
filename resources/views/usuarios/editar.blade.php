@@ -18,31 +18,33 @@
         <div class="card">
             <div class="card-header">Estos son tus datos a cambiar:</div>
             <div class="card-body">
-                <form>
+                <form action="/usuarios/update" method="post">
+                    @csrf
                     <fieldset>
+                        <input type="hidden" value="{{ $user->id }}"  id="id" name="id">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Correo electronico</label>
-                                <input type="email" class="form-control" id="email" email="email" aria-describedby="emailHelp" placeholder="Ingresar correo">
-                                <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tus datos con terceros.</smalls>
+                            <input type="email" value="{{ $user->email }}" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Ingresar correo">
+                                <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tus datos con terceros.</small>
                             </div>
 
 
                             <div class="form-group">
                                 <label for="changeName">Nombre y Apellido</label>
-                                <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Ingresa tu nombre">
+                                <input type="text" value="{{ $user->name }}" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Ingresa tu nombre">
                                 <small id="nameHelp" class="form-text text-muted">Ingresa aqui tu nombre y apellido.</small>
                             </div>
 
 
                             <div class="form-group">
                                 <label for="changeName">Direccion</label>
-                                <input type="text" class="form-control" id="direccion" direccion="direccion" aria-describedby="addressHelp" placeholder="Ingresa tu direccion">
+                                <input type="text" value="{{ $user->direccion }}" class="form-control" id="direccion" name="direccion" aria-describedby="addressHelp" placeholder="Ingresa tu direccion">
                                 <small id="addressHelp" class="form-text text-muted">Ingresa aqui tu direccion.</small>
                             </div>
 
                             <div class="form-group">
                                 <label for="changeName">Telefono</label>
-                                <input type="text" class="form-control" id="telefono" telefono="telefono" aria-describedby="telephoneHelp" placeholder="Ingresa tu telefono">
+                                <input type="text" value="{{ $user->telefono }}" class="form-control" id="telefono" name="telefono" aria-describedby="telephoneHelp" placeholder="Ingresa tu telefono">
                                 <small id="telephoneHelp" class="form-text text-muted">Ingresa aqui tu telefono.</small>
                             </div>
 

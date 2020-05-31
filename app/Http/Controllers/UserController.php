@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Session;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -37,16 +39,15 @@ class UserController extends Controller
         return view('usuarios/editar',['user' => $user]);
     } 
 
-    public function update($id)
+    public function update(Request $request)
     {
-        $user = User::where('id', $id)->first();
+        $user = User::where('id', $request->id)->first();
         $user->name = $request->name;
         $user->direccion = $request->direccion;
         $user->telefono = $request->telefono;
         $user->pais = $request->pais;
         $user->save();
         Session::flash('message', 'Genial !!');
-        return Redirect::to('../articulo/'.$request->id);
-        return view('usuarios/editar',['user' => $user]);
+        return Redirect::to('../usuarios/perfil/'.$request->id);
     } 
 }

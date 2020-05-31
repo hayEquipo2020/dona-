@@ -197,9 +197,10 @@ class ArticuloController extends Controller
     {
         $total = Subasta::sum('valor');
         $articulo = Articulo::where('id', $id)->first();
+        $user = User::where('id', $articulo->user_id)->first();
 
         Mail::to(Auth::user()->email)
-            ->send(new SubastaMail(Auth::user()->name, $articulo->descripcion, $articulo->titulo,  $articulo->precio_base, $total));
+            ->send(new SubastaMail($user->id, $articulo->descripcion, $articulo->titulo,  $articulo->precio_base, $total));
             Session::flash('message', 'Mail Enviado');
             $articulo->estado = "finalizado";
             $articulo->save();

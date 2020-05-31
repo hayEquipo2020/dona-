@@ -4,7 +4,7 @@ Estimado/a {{ $nombre }},<br>
 Felicitaciones !! Sos el ganador de la subasta.<br>
 Esto es lo que ganastes<br>
 Titulo: {{ $titulo }}<br>
-Descripcion: {{ $connection }}<br>
+Descripcion: {{ $articulo }}<br>
 Valor a Pagar USD: {{ $valor }}<br>
 
 <hr>
