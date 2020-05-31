@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+            <!-- Styles -->
+            <link href="https://bootswatch.com/4/materia/bootstrap.min.css" rel="stylesheet">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-4">
@@ -16,17 +18,16 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Perfil de Usuario</div>
-
                 <div class="card-body">
                     <form>
+                    <div class="card-header">Perfil de Usuario</div>
                     <ul class="list-group">
-                        <li class="list-group-item">Nombre: <strong> {{ Auth::user()->name }}</strong></li>
-                        <li class="list-group-item">E-Mail: <strong> {{ Auth::user()->email }}</strong></li>
-                        <li class="list-group-item">Direccion: <strong> {{ Auth::user()->direccion }}</strong></li>
-                        <li class="list-group-item">Telefono: <strong>  {{ Auth::user()->telefono }}</strong></li>
-                        <li class="list-group-item">Pais: <strong> {{ Auth::user()->pais }}</strong></li>
-                      </ul>
+                    <li class="list-group-item">Nombre: <strong> {{ Auth::user()->name }}</strong></li>
+                    <li class="list-group-item">E-Mail: <strong> {{ Auth::user()->email }}</strong></li>
+                    <li class="list-group-item">Direccion: <strong> {{ Auth::user()->direccion }}</strong></li>
+                    <li class="list-group-item">Telefono: <strong>  {{ Auth::user()->telefono }}</strong></li>
+                    <li class="list-group-item">Pais: <strong> {{ Auth::user()->pais }}</strong></li>
+                    </ul>
                     </form>
                 </div>
             </div>
