@@ -10,7 +10,6 @@
                     <ul class="list-group">
                         <li class="list-group-item">Editar</li>
                         <li class="list-group-item">Cambiar Foto</li>
-                        <li class="list-group-item"><a href="/articulo/nuevo">Publicar Articulo</a></li>
                       </ul>
                 </div>
             </div>
@@ -20,6 +19,7 @@
                 <div class="card-header">Perfil de Usuario</div>
 
                 <div class="card-body">
+                    <form>
                     <ul class="list-group">
                         <li class="list-group-item">Nombre: <strong> {{ Auth::user()->name }}</strong></li>
                         <li class="list-group-item">E-Mail: <strong> {{ Auth::user()->email }}</strong></li>
@@ -27,6 +27,7 @@
                         <li class="list-group-item">Telefono: <strong>  {{ Auth::user()->telefono }}</strong></li>
                         <li class="list-group-item">Pais: <strong> {{ Auth::user()->pais }}</strong></li>
                       </ul>
+                    </form>
                 </div>
             </div>
         </div>
