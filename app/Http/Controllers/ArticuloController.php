@@ -142,7 +142,7 @@ class ArticuloController extends Controller
                     $subasta->articulo_id = $request->id;
                     $subasta->valor = $request->valor;
                     $subasta->save();   
-                    Session::flash('message', 'Genial !!!');
+                    Session::flash('message', 'Genial !!!!');
                     return Redirect::to('/');
                 }
                 else
