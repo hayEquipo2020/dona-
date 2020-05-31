@@ -51,7 +51,16 @@ class ArticuloController extends Controller
         if(Auth::user())
         {
             $articulo = Articulo::where('id', $id)->where('user_id', Auth::user()->id)->first();
-            return view('articulos/editar' ,['articulo' => $articulo]);
+            $subasta = Subasta::where('articulo_id', $id)->first();
+            if(!$subasta)
+            {
+                $modificable = true;
+            }
+            else
+            {
+                $modificable = false;
+            }
+            return view('articulos/editar' ,['articulo' => $articulo, 'modificable' => $modificable]);
         }
         else{
             Session::flash('message', 'Debes ingresar al sistema');

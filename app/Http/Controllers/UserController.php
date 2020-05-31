@@ -30,5 +30,10 @@ class UserController extends Controller
     {
         $user = User::where('id', $id)->first();
         return view('usuarios/perfil',['user' => $user]);
-    }    
+    }   
+    public function editar($id)
+    {
+        $user = User::where('id', $id)->first();
+        return view('usuarios/editar',['user' => $user]);
+    } 
 }
