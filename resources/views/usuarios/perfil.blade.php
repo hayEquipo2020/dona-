@@ -8,7 +8,7 @@
 
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="editar">Editar</a></li>
+                    <li class="list-group-item"><a href="/usuarios/editar/{{Auth::user()->id}}">Editar</a></li>
                         <li class="list-group-item">Cambiar Foto</li>
                         <li class="list-group-item"><a href="/articulo/nuevo">Publicar Articulo</a></li>
                       </ul>
