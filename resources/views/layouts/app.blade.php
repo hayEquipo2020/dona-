@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="https://bootswatch.com/4/materia/bootstrap.min.css" rel="stylesheet">
+
+    @yield('styles')
 </head>
 <body>
     <div id="app">
