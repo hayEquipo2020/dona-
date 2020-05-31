@@ -8,9 +8,16 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <a href="/articulo/{{ $articulo->id }}" type="button" class="btn btn-sm btn-secondary">Detalle</a>
-                        <a type="button" class="btn btn-sm btn-secondary">Agregar a Favoritos</a>  
+                        <a type="button" class="btn btn-sm btn-secondary">+ Fav</a>  
                         @auth 
-                        <a href="/articulo/{{ $articulo->id }}" type="button" class="btn btn-sm btn-danger">Ofertar</a>
+                        @if($articulo->estado == '')
+                            <a href="/articulo/{{ $articulo->id }}" type="button" class="btn btn-sm btn-danger">Ofertar</a>
+                        @else
+                            <a href="#" type="button" class="btn btn-sm btn-danger">Subastado</a>
+                        @endif
+                        @endauth
+                        @auth 
+                        <a href="/articulo/finalizar/{{ $articulo->id }}" type="button" class="btn btn-sm btn-primary">Finalziar</a>
                         @endauth
                         @auth
                         @if(Auth::user()->id == $articulo->user_id)
@@ -41,6 +48,11 @@
                      @endisset
                   </strong>
                 </div>
+                <div class="card-footer">
+                    <strong class="d-inline-block mb-2 text-primary">Finaliza el:
+                      {{ $articulo->fecha }} 
+                    </strong>
+                  </div>
               </div>
             </div>
             @endforeach

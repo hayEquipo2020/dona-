@@ -12,6 +12,9 @@ use Session;
 use Uuid;
 use Storage;
 
+use App\Mail\SubastaMail;
+use Illuminate\Support\Facades\Mail;
+
 class ArticuloController extends Controller
 {
     /**
@@ -168,6 +171,7 @@ class ArticuloController extends Controller
             $post = new Articulo;
             $post->foto = $name;
             $post->titulo = $request->titulo;
+            $post->estado = '';
             $post->precio_base = $request->precio_base;
             $post->descripcion = $detalle;;
             $post->user_id = Auth::user()->id;
@@ -178,6 +182,7 @@ class ArticuloController extends Controller
             $post = new Articulo;
             $post->titulo = $request->titulo;
             $post->foto = "";
+            $post->estado = '';
             $post->descripcion = $detalle;
             $post->precio_base = $request->precio_base;
             $post->user_id = Auth::user()->id;
@@ -187,5 +192,18 @@ class ArticuloController extends Controller
         Session::flash('message', 'Publicacion realziada con exito');
         return Redirect::to('/');
         //return view('gastos/edit', ['gasto' => $gasto]);
+    }
+    public function finalizar($id)
+    {
+        $total = Subasta::sum('valor');
+        $articulo = Articulo::where('id', $id)->first();
+
+        Mail::to(Auth::user()->email)
+            ->send(new SubastaMail(Auth::user()->name, $articulo->descripcion, $articulo->titulo,  $articulo->precio_base, $total));
+            Session::flash('message', 'Mail Enviado');
+            $articulo->estado = "finalizado";
+            $articulo->save();
+            return Redirect::to('/');
+
     }
 }

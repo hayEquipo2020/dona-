@@ -16,8 +16,12 @@
                           <input type="text" required class="form-control" id="titulo" name="titulo" placeholder="Titulo de la publicacion">
                         </div>
                         <div class="form-group">
+                          <label for="exampleFormControlTextarea1">La subasta finalizar el: </label>
+                          <input type="text" required class="form-control" id="fecha" name="fecha" placeholder="01/12/2020">
+                        </div>
+                        <div class="form-group">
                           <label for="exampleFormControlTextarea1">Detalle</label>
-                          <textarea class="form-control summernote" required id="detalle" name="detalle" rows="3">
+                          <textarea class="form-control" required id="detalle" name="detalle" rows="3">
                           </textarea>
                         </div>
                         <div class="form-group">

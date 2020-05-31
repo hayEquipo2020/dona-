@@ -30,5 +30,6 @@ Route::get('/articulo/nuevo', 'ArticuloController@nuevo')->name('nuevoarticulo')
 Route::post('/articulos/publicar', 'ArticuloController@publicar')->name('publicararticulo');
 Route::post('/articulos/update', 'ArticuloController@update')->name('updatearticulo');
 Route::post('/articulo/ofertar', 'ArticuloController@ofertar')->name('ofertar');
+Route::get('/articulo/finalizar/{id}', 'ArticuloController@finalizar')->name('finalizar');
 Route::get('/articulo/editar/{id}', 'ArticuloController@editar')->name('articuloeditar');
 Route::get('/articulo/{id}', 'ArticuloController@detalle')->name('articulodetalle');
