@@ -39,7 +39,7 @@
           @csrf
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">$UYU</span>
+              <span class="input-group-text">USD</span>
             </div>
             <input type="hidden" id="id" name="id" value="{{ $articulo->id }}">
             <input type="text"  id="valor" name="valor" class="form-control" aria-label="Amount (to the nearest dollar)">

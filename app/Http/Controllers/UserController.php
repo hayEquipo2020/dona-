@@ -36,4 +36,17 @@ class UserController extends Controller
         $user = User::where('id', $id)->first();
         return view('usuarios/editar',['user' => $user]);
     } 
+
+    public function update($id)
+    {
+        $user = User::where('id', $id)->first();
+        $user->name = $request->name;
+        $user->direccion = $request->direccion;
+        $user->telefono = $request->telefono;
+        $user->pais = $request->pais;
+        $user->save();
+        Session::flash('message', 'Genial !!');
+        return Redirect::to('../articulo/'.$request->id);
+        return view('usuarios/editar',['user' => $user]);
+    } 
 }

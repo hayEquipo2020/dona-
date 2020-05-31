@@ -22,6 +22,7 @@ Route::get('/', 'HomeController@index')->name('home');
 // usuarios
 Route::get('/usuarios/perfil/{id}', 'UserController@perfil')->name('perfil');
 Route::get('/usuarios/editar/{id}', 'UserController@editar')->name('editar');
+Route::post('/usuarios/update', 'UserController@update')->name('updateusuario');
 
 // articuloes
 Route::get('/articulos', 'ArticuloController@index')->name('articulo');
