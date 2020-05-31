@@ -24,7 +24,7 @@
                     <div class="level-item has-text-centered">
                       <div>
                         <p class="heading">Donado hasta ahora</p>
-                      <p class="title">{{ $donado }}</p>
+                      <p class="title">USD {{ $donado }}</p>
                       </div>
                     </div>
                   </nav>
