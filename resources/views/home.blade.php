@@ -15,9 +15,9 @@
             <div class="col-md-12">
                 <div class="jumbotron">
                     <div class="container">
-                      <h1 class="display-3">Bienvenidos</h1>
-                      <h3>Esta plataforma esta construida para poder donar o comprar a través de una forma de subasta aquello que no estamos usando, todo lo recaudado va a ser usado en acciones que tengan un impacto positivo en nuestro planeta y comunidad.
-                        Más informacion en la seccion de about</h3>
+                      <h2 class="display-3 texto1">Bienvenidos</h1>
+                      <h5>Esta plataforma esta construida para poder donar o comprar a través de una forma de subasta aquello que no estamos usando, todo lo recaudado va a ser usado en acciones que tengan un impacto positivo en nuestro planeta y comunidad.
+                        Más informacion en la seccion de about</h5>
                     </div>
                   </div>
                   <nav class="level is-mobile">

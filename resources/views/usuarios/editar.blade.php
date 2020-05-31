@@ -23,18 +23,15 @@
                     <fieldset>
                         <input type="hidden" value="{{ $user->id }}"  id="id" name="id">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Correo electronico</label>
-                            <input type="email" value="{{ $user->email }}" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Ingresar correo">
-                                <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tus datos con terceros.</small>
-                            </div>
-
-
-                            <div class="form-group">
                                 <label for="changeName">Nombre y Apellido</label>
                                 <input type="text" value="{{ $user->name }}" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Ingresa tu nombre">
                                 <small id="nameHelp" class="form-text text-muted">Ingresa aqui tu nombre y apellido.</small>
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo electronico</label>
+                            <input type="email" value="{{ $user->email }}" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Ingresar correo">
+                                <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tus datos con terceros.</small>
+                            </div>
 
                             <div class="form-group">
                                 <label for="changeName">Direccion</label>

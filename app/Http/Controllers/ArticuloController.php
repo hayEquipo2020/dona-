@@ -79,7 +79,7 @@ class ArticuloController extends Controller
             if(!$subasta)
             {
                 $modificable = true;
-                $articulo->valor = $request->valor;
+                $articulo->precio_base = $request->precio_base;
             }
             else
             {
@@ -87,6 +87,7 @@ class ArticuloController extends Controller
             }
             $articulo->titulo = $request->titulo;
             $articulo->descripcion = $request->detalle;
+            $articulo->fecha = $request->fecha;
             $articulo->save();
             Session::flash('message', 'Modificacion realizada con exito');
             return Redirect::to('/');
@@ -120,7 +121,7 @@ class ArticuloController extends Controller
                         $subasta->valor = $request->valor;
                         $subasta->save();
                         Session::flash('message', 'Genial !!');
-                        return Redirect::to('../articulo/'.$request->id);
+                        return Redirect::to('/');
                     }
                     else{
                         Session::flash('error', 'Debes ofertar mas de '.$subasta->valor);
@@ -142,7 +143,7 @@ class ArticuloController extends Controller
                     $subasta->valor = $request->valor;
                     $subasta->save();   
                     Session::flash('message', 'Genial !!!');
-                    return Redirect::to('../articulo/'.$request->id);
+                    return Redirect::to('/');
                 }
                 else
                 {
@@ -172,6 +173,7 @@ class ArticuloController extends Controller
             $post->foto = $name;
             $post->titulo = $request->titulo;
             $post->estado = '';
+            $post->fecha = $request->fecha;
             $post->precio_base = $request->precio_base;
             $post->descripcion = $detalle;;
             $post->user_id = Auth::user()->id;
@@ -183,6 +185,7 @@ class ArticuloController extends Controller
             $post->titulo = $request->titulo;
             $post->foto = "";
             $post->estado = '';
+            $post->fecha = $request->fecha;
             $post->descripcion = $detalle;
             $post->precio_base = $request->precio_base;
             $post->user_id = Auth::user()->id;

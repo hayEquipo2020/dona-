@@ -1,8 +1,10 @@
 @foreach($articulos as $articulo)
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-              <img src="../../images/articulos/{{ $articulo->foto }}" class="img-thumbnail">
-                <div class="card-body">
+            <div class="col-md-4 mb-5">
+              <div class="card mb-8 shadow-sm">
+                  <div class="card-header">
+                    <img src="../../images/articulos/{{ $articulo->foto }}" class="img-thumbnail centrar">
+                </div>
+                    <div class="card-body">
                   <p class="card-text">{{ $articulo->titulo }}</p>
                   <p class="card-text">{{ $articulo->detalle }}</p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -55,4 +57,5 @@
                   </div>
               </div>
             </div>
+        <hr>
             @endforeach

@@ -20,6 +20,10 @@
                           placeholder="Titulo de la publicacion">
                         </div>
                         <div class="form-group">
+                            <label for="exampleFormControlTextarea1">La subasta finalizar el: </label>
+                            <input type="text" required class="form-control" id="fecha" name="fecha" value="{{ $articulo->fecha }}">
+                          </div>
+                        <div class="form-group">
                           <label for="exampleFormControlTextarea1">Detalle</label>
                             <textarea class="form-control summernote" required id="detalle" name="detalle" >
                             {{ $articulo->descripcion }}

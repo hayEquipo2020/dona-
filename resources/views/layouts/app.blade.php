@@ -22,6 +22,16 @@
 
 
     @yield('styles')
+    <style>
+        .centrar
+        {
+            display:block;
+            margin:auto;
+            }
+            .texto1 {
+  text-align: center;
+}
+</style>
 </head>
 <body>
     <div id="app">
@@ -37,8 +47,8 @@
                 <div class="collapse navbar-collapse" id="navbarColor01">
     
                     <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" size="80">
-                        <button class="btn btn-secondary my-2 my-sm-0 btn-sm" type="submit">Search</button>
+                        <input class="form-control mr-sm-2" type="text" placeholder="" size="80">
+                        <button class="btn btn-secondary my-2 my-sm-0 btn-sm" type="submit">Buscar</button>
                     </form>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
