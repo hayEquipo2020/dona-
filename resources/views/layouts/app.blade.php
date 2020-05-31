@@ -26,7 +26,7 @@
 <body>
     <div id="app">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-light">
                 <a class="navbar-brand" href="/">
                     <img src="../../images/logo.png" width="80" height="80" alt="" loading="lazy">
                   </a>
